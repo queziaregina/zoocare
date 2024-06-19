@@ -35,6 +35,11 @@ flutter:
     - assets/fridge.png
     - assets/papaya.png
     - assets/shop.png
+    - assets/images/peach.png
+    - assets/images/watermelon.png
+    - assets/images/hazelnut.png
+    - assets/images/kiwi_fruit.png
+    - assets/images/plus.png
 
 fonts:
     - family: Super Bubble
