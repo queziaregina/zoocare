@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AnimalScreen extends StatelessWidget {
-  final String animalAsset;
-  final String title;
-
-  AnimalScreen({required this.animalAsset, required this.title});
-
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    final animalAsset = args['animalAsset'];
+    final animalName = args['animalName'];
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset('assets/logo_zoocare.png', height: 60),
@@ -50,10 +49,34 @@ class AnimalScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildBottomButton('assets/comida.png', 'Comida'),
-                  _buildBottomButton('assets/limpeza.png', 'Banho'),
-                  _buildBottomButton('assets/home.png', 'Casa'),
-                  _buildBottomButton('assets/minijogos.png', 'Brincar'),
+                  _buildBottomButton(
+                    context,
+                    'assets/comida.png',
+                    'Comida',
+                    '/food',
+                    {'animalAsset': animalAsset, 'animalName': animalName},
+                  ),
+                  _buildBottomButton(
+                    context,
+                    'assets/limpeza.png',
+                    'Banho',
+                    '/bath',
+                    {'animalAsset': animalAsset, 'animalName': animalName},
+                  ),
+                  _buildBottomButton(
+                    context,
+                    'assets/home.png',
+                    'Casa',
+                    '/geladeira',
+                    {'animalAsset': animalAsset, 'animalName': animalName},
+                  ),
+                  _buildBottomButton(
+                    context,
+                    'assets/minijogos.png',
+                    'Brincar',
+                    '/mini_games',
+                    {'animalAsset': animalAsset, 'animalName': animalName},
+                  ),
                 ],
               ),
             ],
@@ -74,14 +97,14 @@ class AnimalScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomButton(String assetPath, String label) {
+  Widget _buildBottomButton(BuildContext context, String assetPath, String label, String route, Map arguments) {
     return Column(
       children: [
         IconButton(
           icon: Image.asset(assetPath),
           iconSize: 50,
           onPressed: () {
-            // Implement button action
+            Navigator.pushNamed(context, route, arguments: arguments);
           },
         ),
         Text(label, style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)),

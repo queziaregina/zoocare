@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'mini_games.dart';
 
 class PetSelection extends StatelessWidget {
   const PetSelection({super.key});
@@ -21,8 +22,7 @@ class PetSelection extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 leading: IconButton(
-                  icon:
-                      Image.asset('assets/seta_icone.png'), // Altere esta linha
+                  icon: Image.asset('assets/seta 3.png'),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 title: const Text(
@@ -34,19 +34,43 @@ class PetSelection extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const PetButton(
+              PetButton(
                 imagePath: 'assets/raposa.png',
                 petName: 'RAPOSA',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MiniGames(petName: 'Raposa'),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 10),
-              const PetButton(
+              PetButton(
                 imagePath: 'assets/panda.png',
                 petName: 'PANDA',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MiniGames(petName: 'Panda'),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 10),
-              const PetButton(
+              PetButton(
                 imagePath: 'assets/tartaruga.png',
                 petName: 'TARTARUGA',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MiniGames(petName: 'Tartaruga'),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -59,11 +83,13 @@ class PetSelection extends StatelessWidget {
 class PetButton extends StatelessWidget {
   final String imagePath;
   final String petName;
+  final VoidCallback onPressed;
 
   const PetButton({
     super.key,
     required this.imagePath,
     required this.petName,
+    required this.onPressed,
   });
 
   @override
@@ -71,11 +97,11 @@ class PetButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,
-          padding: const EdgeInsets.all(20), // Diminui o padding
-          minimumSize: const Size(150, 150), // Diminui o tamanho
+          padding: const EdgeInsets.all(20),
+          minimumSize: const Size(150, 150),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
@@ -85,14 +111,14 @@ class PetButton extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               imagePath,
-              height: 80, // Diminui a altura da imagem
+              height: 80,
             ),
             const SizedBox(height: 5),
             Text(
               petName,
               style: const TextStyle(
                 fontFamily: 'Super Bubble',
-                fontSize: 16, // Diminui a fonte
+                fontSize: 16,
                 color: Colors.white,
               ),
             ),
