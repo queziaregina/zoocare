@@ -1,0 +1,42 @@
+name: zoocare
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  - assets/fundo.png
+    - assets/google_icone.png
+    - assets/panda.png
+    - assets/raposa.png
+    - assets/tartaruga.png
+    - assets/logo_zoocare.png
+    - assets/seta_icone.png
+    - assets/comida.png
+    - assets/limpeza.png
+    - assets/home.png
+    - assets/minijogos.png
+    - assets/fridge.png
+    - assets/papaya.png
+    - assets/shop.png
+
+fonts:
+    - family: Super Bubble
+      fonts:
+        - asset: assets/font/SuperBubble.ttf
